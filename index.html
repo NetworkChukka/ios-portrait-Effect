@@ -1,1 +1,105 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>PortraitCam - Professional Portrait Effects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1><i class="fas fa-camera-retro"></i> PortraitCam</h1>
+            <p class="subtitle">Professional portrait effects in your browser</p>
+        </header>
+        
+        <main class="app-main">
+            <div class="upload-card card">
+                <div class="upload-area" id="dropZone">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <h3>Upload Your Photo</h3>
+                    <p>Drag & drop or click to browse</p>
+                    <input type="file" id="imageUpload" accept="image/*" capture="camera">
+                    <label for="imageUpload" class="upload-btn">Select Image</label>
+                    <div class="camera-option">
+                        <i class="fas fa-camera"></i> Take Photo
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls-card card hidden" id="controlsCard">
+                <h3><i class="fas fa-sliders-h"></i> Effect Controls</h3>
+                
+                <div class="control-group">
+                    <label for="blurStrength">
+                        <i class="fas fa-blur"></i> Blur Strength
+                        <span id="blurValue">5</span>
+                    </label>
+                    <input type="range" id="blurStrength" min="1" max="20" value="5">
+                </div>
+                
+                <div class="control-group">
+                    <label for="brightness">
+                        <i class="fas fa-sun"></i> Brightness
+                        <span id="brightnessValue">100%</span>
+                    </label>
+                    <input type="range" id="brightness" min="50" max="150" value="100">
+                </div>
+                
+                <div class="effect-buttons">
+                    <button id="applyEffect" class="btn-primary">
+                        <i class="fas fa-magic"></i> Apply Effect
+                    </button>
+                    <button id="resetEffect" class="btn-secondary">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </div>
+            
+            <div class="result-card card hidden" id="resultCard">
+                <h3><i class="fas fa-image"></i> Your Portrait</h3>
+                
+                <div class="image-preview-container">
+                    <div class="image-tabs">
+                        <button class="tab-btn active" data-tab="original">Original</button>
+                        <button class="tab-btn" data-tab="processed">Processed</button>
+                    </div>
+                    
+                    <div class="image-display">
+                        <img id="originalImage" class="active">
+                        <canvas id="processedImage"></canvas>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="downloadBtn" class="btn-download">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button id="shareBtn" class="btn-share">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="app-footer">
+            <p>PortraitCam &copy; 2023 | Works on all devices</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+    
+    <div class="loading-overlay hidden" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Processing your image...</p>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
